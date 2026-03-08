@@ -26,7 +26,7 @@ class SemanticCache:
                 [entry["embedding"]]
             )[0][0]
 
-            print("Similarity: ", sim)
+            # print("Similarity: ", sim)
 
             if sim >= self.threshold:
 
