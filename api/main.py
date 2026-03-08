@@ -46,10 +46,11 @@ async def startup_event():
     print("Loading models...")
 
     # Load dataset
-    df = pd.read_csv("clustered_dataset.csv")
+    df = pd.read_csv("cluster_probs.csv")
 
     df["cluster_probs"] = df["cluster_probs"].apply(ast.literal_eval)
 
+    df = pd.read_csv("clean_text.csv")
     state.texts = df["clean_text"].tolist()
 
     # Load embeddings
