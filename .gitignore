@@ -8,4 +8,5 @@
 umap_reducer.pkl
 
 
-/__*__
+/__pycache__
+*.pyc

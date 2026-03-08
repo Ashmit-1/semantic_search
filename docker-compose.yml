@@ -1,0 +1,10 @@
+services:
+  semantic-search-api:
+    build: .
+    container_name: newsgroups_api
+    ports:
+      - "8000:8000"
+    volumes:
+      - .:/app
+    environment:
+      - PYTHONUNBUFFERED=1
