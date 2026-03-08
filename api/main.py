@@ -79,8 +79,6 @@ async def startup_event():
         joblib.dump(reducer, "models/umap_reducer.pkl")
         state.reducer = joblib.load("models/umap_reducer.pkl")
 
-    state.reducer = joblib.load("models/umap_reducer.pkl")
-
     state.gmm = joblib.load("models/gmm_model.pkl")
 
     # Initialize cache
