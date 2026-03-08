@@ -1,8 +1,10 @@
+import os
 import numpy as np
 import pandas as pd
 import ast
 import faiss
 import joblib
+import umap
 
 from fastapi import FastAPI
 from pydantic import BaseModel
@@ -58,6 +60,24 @@ async def startup_event():
 
     # Load ML models
     state.model = SentenceTransformer("all-MiniLM-L6-v2")
+
+
+    # if the reducer exits then load it otherwise create it and then load it
+    state.reducer = None
+    if os.path.exists("models/umap_reducer.pkl"):
+        state.reducer = joblib.load("models/umap_reducer.pkl")
+    else:
+        embeddings = np.load("models/embeddings.npy")
+        reducer = umap.UMAP(
+            n_neighbors=30,
+            min_dist=0.0,
+            n_components=10,
+            random_state=42
+        )
+        reduced_embeddings = reducer.fit_transform(embeddings)
+        os.makedirs("models", exist_ok=True)  
+        joblib.dump(reducer, "models/umap_reducer.pkl")
+        state.reducer = joblib.load("models/umap_reducer.pkl")
 
     state.reducer = joblib.load("models/umap_reducer.pkl")
 
