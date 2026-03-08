@@ -3,3 +3,9 @@
 
 *.csv
 *.npy
+
+#model files
+*.pkl
+
+
+/__*__
