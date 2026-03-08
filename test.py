@@ -29,6 +29,7 @@ gmm = joblib.load("gmm_model.pkl")
 reducer = joblib.load("umap_reducer.pkl")
 
 # Initialize semantic cache
+# I have tested for various threshold values but 0.75 seemed to be the sweet spot
 cache = SemanticCache(similarity_threshold=0.75)
 
 # Vector search function
