@@ -2,10 +2,10 @@
 /data
 
 *.csv
-*.npy
+
 
 #model files
-*.pkl
+umap_reducer.pkl
 
 
 /__*__
